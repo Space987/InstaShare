@@ -10,7 +10,7 @@ class User extends \assignment2\core\Controller{
 			if(password_verify($_POST['password'], $user->password_hash)){
 				$_SESSION['username'] = $user->username;
 				$_SESSION['user_id'] = $user->user_id;
-				header('location:/Instashare/index');
+				header('location:/Publication/index');
 
 			}else{
 				header('location:/User/index?error=Incorrect username or password');

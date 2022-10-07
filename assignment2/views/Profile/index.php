@@ -35,7 +35,7 @@
     			width: 100%;
     		}
 
-    		#username{
+    		#firstname{
     			font-family: "Times New Roman", Times, serif;
 			    position: absolute;
 			    margin-top: 10px;
@@ -51,7 +51,7 @@
     			width: 100%;
     		}
 
-    		#password{
+    		#middlename{
     			font-family: "Times New Roman", Times, serif;
 			    position: absolute;
 			    margin-top: 10px;
@@ -67,7 +67,7 @@
     			width: 100%;
     		}
 
-    		#passwordConf{
+    		#lastname{
     			font-family: "Times New Roman", Times, serif;
 			    position: absolute;
 			    margin-top: 10px;

@@ -3,7 +3,7 @@ namespace assignment2\core;
     		   
 class App{
 
-	private $controller = 'User';
+	private $controller = 'Publication';
 	private $method = 'index';
 
 

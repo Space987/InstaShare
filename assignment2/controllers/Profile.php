@@ -16,4 +16,5 @@ class Profile extends \assignment2\core\Controller{
 			$this->view('Profile/index');
 		}
 	}
+
 }
