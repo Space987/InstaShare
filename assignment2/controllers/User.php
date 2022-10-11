@@ -10,8 +10,7 @@ class User extends \assignment2\core\Controller{
 			if(password_verify($_POST['password'], $user->password_hash)){
 				$_SESSION['username'] = $user->username;
 				$_SESSION['user_id'] = $user->user_id;
-				header('location:/Publication/index');
-
+				header('location:/Publication/index/?message=Successfully logged in');
 			}else{
 				header('location:/User/index?error=Incorrect username or password');
 			}
@@ -19,7 +18,7 @@ class User extends \assignment2\core\Controller{
 		}else{
 			$this->view('User/index');
 		}
-	 }
+ 	 }
 
 	 public function register(){
 		 if(isset($_POST['action'])){
@@ -46,5 +45,10 @@ class User extends \assignment2\core\Controller{
 		 }else{
 		 	$this->view('User/register');
 		 }
+	 }
+
+	public function logout(){
+		session_destroy();
+		header('location:/Publication/index?message=You\'ve been successfully logged out');
 	}
 }

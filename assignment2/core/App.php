@@ -39,6 +39,13 @@ class App{
 
 		$attributes = array_values(array_merge($classAttributes, $methodAttributes));
 
+		foreach($attributes as $attribute){
+				$filter = $attribute->newInstance();
+				if($filter-> execute()){
+					return;
+				}
+		}
+
 		//while passing all other parts as arguments
 		//replace the paramaters
 		$params = $url ? array_values($url) : [];

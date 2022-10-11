@@ -16,6 +16,8 @@ class Publication extends \assignment2\core\Controller{
 	public function details($publication_id){
 		$publication = new \assignment2\models\Publication();
 		$publication = $publication->get($publication_id);
-		$this->view('Publication/details', $publication);
+		$comment = new \assignment2\models\Comment();
+		$comment = $comment->getAll($publication_id);
+	 	$this->view('Publication/details', ['publication'=>$publication, 'comment'=>$comment]);
 	}
 }

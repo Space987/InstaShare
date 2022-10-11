@@ -23,7 +23,7 @@
     			font-family: "Times New Roman", Times, serif;
 			    position: absolute;
 			    text-align: center;
-			    top: 30%;
+			    top: 10%;
     			width: 100%;
     		}
 
@@ -31,26 +31,88 @@
     			font-family: "Times New Roman", Times, serif;
 			    position: absolute;
 			    text-align: center;
-			    font-size: 23px;
-			    margin-top: 300px;
+			    font-size: 20px;
+			    margin-top: 120px;
 			    margin-left: 40%;
     			width: 300px;
     		}
 
-    		button{
+    		table{
     			font-family: "Times New Roman", Times, serif;
+			    position: absolute;
 			    text-align: center;
-			    margin-top: 450px;
-    			width: 300px;
+			    font-size: 19px;
+			    margin-top: 30%;
+			    margin-left: 25%;
+    			width: 700px;
+    		}
+
+    		#backBtn{
+    			font-family: "Times New Roman", Times, serif;
+			    margin-left: 51%;
+			    position: absolute;
+			    margin-top: 25%;
+    			width: 200px;
+    			font-size: 20px;
+    			text-align: center;
     		}	
+
+    		#addBtn{
+    			font-family: "Times New Roman", Times, serif;
+			    margin-left: 36%;
+			    position: absolute;
+			    margin-top: 25%;
+    			width: 200px;
+    			font-size: 20px;
+    			text-align: center;
+    		}
+
+    		a:hover{
+    			text-decoration: none;
+    		}
 
 		</style>
 	</head>
 
 	<body>
-		<h1><?= $data->caption ?><h1>
+		<?php
+			if(isset($_GET['error'])){ ?>
+				<div class="alert alert-danger alert-dismissible">
+  					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  					<?= $_GET['error'] ?>
+				</div>
+		<?php  }
+			if(isset($_GET['message'])){ ?>
+				<div class="alert alert-success alert-dismissible">
+  					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  					<?= $_GET['message'] ?>
+				</div>
+		<?php  }
+		?>
+
+		<h1><?= $data['publication']->caption ?></h1>
 		
-		<p><?= $data->date_time ?></p>
-		<button type="button" class="btn btn-primary" onclick="history.go(-1)">Back</button>		
-	</body>
+		<p><?= $data['publication']->date_time ?></p>
+		
+
+		<table>
+			<tr><th>Comment </th><th>Date/Time </th><th>Action </th></tr>
+			<?php
+					foreach($data['comment'] as $item)
+					{
+						echo 	"<tr>
+									<td>$item->comment</td>
+									<td>$item->date_time</td>
+									<td type=action>
+										<a href='/Comment/edit/$item->comment_id'>Edit</a>
+										<a href='/Comment/delete/$item->comment_id'> | Delete</a>
+									</td><br>
+								</tr>";
+					}
+			?>
+		</table>
+		<a id="addBtn" href='/Comment/add/<?= $data['publication']->publication_id ?>'>Add a Comment</a>
+			
+		<a id="backBtn" href='/Publication/index'>Back</a>	
+		</body>
 </html>

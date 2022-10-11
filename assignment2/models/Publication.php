@@ -7,7 +7,7 @@ class Publication extends \assignment2\core\Models{
 
 	public function getAll(){
 		//get all records from the owner table
-		$SQL = "SELECT * FROM publication";
+		$SQL = "SELECT * FROM publication ORDER BY publication_id DESC";
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute();//pass any data for the query
 		$STMT->setFetchMode(\PDO::FETCH_CLASS, "assignment2\\models\\Publication");

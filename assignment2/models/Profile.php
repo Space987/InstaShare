@@ -16,4 +16,12 @@ class Profile extends \assignment2\core\Models{
 		$STMT->setFetchMode(\PDO::FETCH_CLASS, "assignment2\\models\\Profile");
 		return $STMT->fetch();
 	}
+
+	public function getUser($user_id){
+		$SQL = "SELECT * FROM profile WHERE user_id=:user_id";
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['user_id'=>$user_id]);//pass any data for the query
+		$STMT->setFetchMode(\PDO::FETCH_CLASS, "assignment2\\models\\Profile");
+		return $STMT->fetch();
+	}
 }
