@@ -49,7 +49,7 @@
 
     		#backBtn{
     			font-family: "Times New Roman", Times, serif;
-			    margin-left: 51%;
+			    margin-left: 65%;
 			    position: absolute;
 			    margin-top: 25%;
     			width: 200px;
@@ -59,7 +59,27 @@
 
     		#addBtn{
     			font-family: "Times New Roman", Times, serif;
-			    margin-left: 36%;
+			    margin-left: 53%;
+			    position: absolute;
+			    margin-top: 25%;
+    			width: 200px;
+    			font-size: 20px;
+    			text-align: center;
+    		}
+
+    		#deletePub{
+    			font-family: "Times New Roman", Times, serif;
+			    margin-left: 40%;
+			    position: absolute;
+			    margin-top: 25%;
+    			width: 200px;
+    			font-size: 20px;
+    			text-align: center;
+    		}
+
+    		#editPub{
+    			font-family: "Times New Roman", Times, serif;
+			    margin-left: 27%;
 			    position: absolute;
 			    margin-top: 25%;
     			width: 200px;
@@ -69,6 +89,12 @@
 
     		a:hover{
     			text-decoration: none;
+    		}
+
+    		img{
+			    margin-left: 40%;
+			    position: absolute;
+			    margin-top: 12%;
     		}
 
 		</style>
@@ -93,9 +119,9 @@
 		<h1><?= $data['publication']->caption ?></h1>
 		
 		<p><?= $data['publication']->date_time ?></p>
-
-		<img src='/images/<?= $data['publication']->picture?>' style="max-width:200px;max-height:200px" id="profile_pic_preview" />
 		
+
+		<img src='/images/<?= $data['publication']->picture?>' style="max-width:300px;max-height:3	00px" id="profile_pic_preview" />
 
 		<table>
 			<tr><th>Comment </th><th>Date/Time </th><th>Action </th></tr>
@@ -113,6 +139,9 @@
 					}
 			?>
 		</table>
+		<a id="deletePub" href='/Publication/delete/<?= $data['publication']->publication_id ?>'>Delete Publication</a>
+		<a id="editPub" href='/Publication/edit/<?= $data['publication']->publication_id ?>'>Edit Publication</a>
+		
 		<a id="addBtn" href='/Comment/add/<?= $data['publication']->publication_id ?>'>Add a Comment</a>
 			
 		<a id="backBtn" href='/Publication/index'>Back</a>	

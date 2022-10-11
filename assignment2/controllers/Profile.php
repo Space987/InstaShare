@@ -17,23 +17,19 @@ class Profile extends \assignment2\core\Controller{
 		}
 	}
 
-	public function editProfile($profile_id){
-		$profile = new \assignment2\models\Profile();
-		$profile = $profile->get($profile_id);//need this
+	public function edit($profile_id){
 		if(isset($_POST['action'])){
-			$profile->first_name = $_POST['first_name'];
-			$profile->middle_name = $_POST['middle_name'];
-			$profile->last_name = $_POST['last_name'];
+			$profile->profile = $_POST['profile'];
+			$profile->date_time = $_POST['date_time'];
 
-			$profile->update();
+			echo("made it");
+			//$profile->update();
 
-			header('location:/Profile/editProfile');
+			header('location:/Profile/edit/' . $profile_id .'?message=Profile Updated');
 		}else{
-			$this->view('Profile/editProfile', $profile);	
-
+			$profile = new \assignment2\models\Profile();
+	 		$profile = $profile->get($profile_id);
+			$this->view('Profile/edit', ['profile'=>$profile]);	
 		}
-	}
-
-
-
+	}	
 }

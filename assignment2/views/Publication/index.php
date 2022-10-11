@@ -69,29 +69,22 @@
     			<div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
         			<ul class="navbar-nav ml-auto">
             			<?php if(isset($_SESSION['username'])){
-            				
-            			// We are trying to get the profile based on the current user session so we can pass it to the controller	
-						//foreach($data as $item)
-						//{
-						//var_dump($item->profile_id);
-						//if($item->profile_id == $profile->profile_id && $profile->user_id == $_SESSION['user_id']){
-						//echo 	"<a href='/Profile/editProfile'>Edit</a>";
-						//}
-						//}
             				echo '	<li class="nav-item">
-                						<a class="nav-link" href ="/User/logout">Login-out</a>
+                						<a class="nav-link" href ="/User/logout">Logout</a>
             						</li>
+									<li class="nav-item">
+				    					<a class="nav-link" href ="/Profile/edit/<?php{ $_SESSION["user_id"]};>?">My profile</a>
+				  					</li>
 
-            						<li class="nav-item">
-                						<a class="nav-link" href ="/Publication/add">Create Publication</a>
-            						</li>'
-
-            						;
-
-				  				
+				  					<li class="nav-item">
+				    					<a class="nav-link" href ="/Publication/add">Create Publication</a>
+				  					</li>';
             			}else{
             				echo '	<li class="nav-item">
                 						<a class="nav-link" href ="/User/index">Login</a>
+            						</li>
+            						<li class="nav-item">
+                						<a class="nav-link" href ="/User/register">Register</a>
             						</li>';
             			} ?>
            	        </ul>
@@ -102,7 +95,7 @@
 			  <div class="form-outline">
 			    <input type="text" id="searchbar" class="form-control" name="search" placeholder="Search" />
 			  </div>
-			  <button type="button" class="btn btn-primary">
+			  <button type="submit" name="action" onclick="window.location = '/Publication/search'" class="btn btn-primary">
 			    <i class="fa fa-search"></i>
 			  </button>
 			</div>
@@ -115,7 +108,7 @@
 					{
 						echo 	"<tr>
 									<td type=action><br>	
-										<a href='/Publication/details/$item->publication_id'>$item->caption</a>
+										<a id='caption' href='/Publication/details/$item->publication_id'>$item->caption</a>
 									</td>
 								</tr>";
 					}

@@ -15,15 +15,15 @@
 		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
 		crossorigin="anonymous"></script>
 
-		<title>Register a new user</title>
+		<title>Edit Publication</title>
 
 		<style>
-			h1{
+    		h1{
     			font-size: 30px;
     			font-family: "Times New Roman", Times, serif;
 			    position: absolute;
 			    text-align: center;
-			    top: 20%;
+			    top: 25%;
     			width: 100%;
     		}
 
@@ -31,11 +31,11 @@
     			font-family: "Times New Roman", Times, serif;
 			    position: absolute;
 			    text-align: center;
-			    top: 30%;
+			    top: 38%;
     			width: 100%;
     		}
 
-    		#username{
+    		#caption{
     			font-family: "Times New Roman", Times, serif;
 			    position: absolute;
 			    margin-top: 10px;
@@ -47,11 +47,11 @@
     			font-family: "Times New Roman", Times, serif;
 			    position: absolute;
 			    text-align: center;
-			    top: 45%;
+			    top: 52%;
     			width: 100%;
     		}
 
-    		#password{
+    		#date_time{
     			font-family: "Times New Roman", Times, serif;
 			    position: absolute;
 			    margin-top: 10px;
@@ -63,25 +63,26 @@
     			font-family: "Times New Roman", Times, serif;
 			    position: absolute;
 			    text-align: center;
-			    top: 60%;
+			    top: 68%;
     			width: 100%;
     		}
 
-    		#passwordConf{
+    		#profile_pic_preview{
     			font-family: "Times New Roman", Times, serif;
+			    margin-left: 40%;
 			    position: absolute;
-			    margin-top: 10px;
-			    margin-left: 36%;
-    			width: 400px;
+			    top: 35px;
+    			width: 300px;
+    			text-align: center;
     		}
 
     		button{
     			font-family: "Times New Roman", Times, serif;
 			    position: absolute;
 			    text-align: center;
-			    margin-top: 500px;
-			    margin-left: 40%;
-    			width: 300px;
+			    margin-top: 535px;
+			    margin-left: 43%;
+    			width: 230px;
     		}
 
     		#backBtn{
@@ -97,46 +98,32 @@
     		a:hover{
     			text-decoration: none;
     		}
+
 		</style>
 	</head>
 
 	<body>
-		<?php
-			if(isset($_GET['error'])){ ?>
-				<div class="alert alert-danger alert-dismissible">
-  					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-  					<?= $_GET['error'] ?>
-				</div>
-		<?php  }
-			if(isset($_GET['message'])){ ?>
-				<div class="alert alert-success alert-dismissible">
-  					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-  					<?= $_GET['message'] ?>
-				</div>
-		<?php  }
-		?>
-
-		<h1>Sign up</h1>
-
-		<form action='' method='post'>
+		<h1>Edit your Publication</h1>
+		<form action='' method='post' enctype="multipart/form-data">
 			<div class="form-group1">
-    			<label for="username">Username</label>
-    			<input type="text" class="form-control" id="username" name='username' placeholder="Enter username">
+    			<label for="caption">Your caption</label>
+    			<input type="text" class="form-control" id="caption" name='caption' value="<?= $data['publication']->caption ?>">
   			</div><br>
 
   			<div class="form-group2">
-    			<label for="password">Password</label>
-    			<input type="password" class="form-control" id="password" name="password" placeholder="Enter Password">
+    			<label for="date_time">Date and Time of Publication	</label>
+    			<input type="datetime-local" class="form-control" id="date_time" name='date_time' value="<?= $data['publication']->date_time ?>">
   			</div><br>
-
+  			
   			<div class="form-group3">
-    			<label for="passwordConf">Password Confirmation</label>
-    			<input type="password" class="form-control" id="passwordConf" name="password_confirmation" placeholder="Re-enter Password">
-  			</div>
+    			<label for="profile_pic_preview">Your Image</label>
+    			<input type="file" class="form-control" id="profile_pic_preview" name='profile_pic'>
+  			</div><br>
   			<br>
-  			<button type="submit" name='action' value='Register' class="btn btn-primary">Sign up</button>
+  			<button type="submit" name='action' class="btn btn-primary">Save Changes</button>
   			<br>
 		</form>
-		<a id="backBtn" href='javascript: history.go(-1)'>Back</a>
+		
+		<a id="backBtn" href='/Publication/details/<?= $data['publication']->publication_id ?>'>Back</a>
 	</body>
 </html>
