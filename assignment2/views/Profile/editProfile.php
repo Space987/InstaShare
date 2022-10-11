@@ -15,62 +15,74 @@
 		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
 		crossorigin="anonymous"></script>
 
-		<title>Details for publication</title>
+		<title>Create Profile</title>
 
 		<style>
-    		h1{
+			h1{
     			font-size: 30px;
     			font-family: "Times New Roman", Times, serif;
 			    position: absolute;
 			    text-align: center;
-			    top: 10%;
+			    top: 20%;
     			width: 100%;
     		}
 
-    		p{
+    		.form-group1{
     			font-family: "Times New Roman", Times, serif;
 			    position: absolute;
 			    text-align: center;
-			    font-size: 20px;
-			    margin-top: 120px;
+			    top: 30%;
+    			width: 100%;
+    		}
+
+    		#firstname{
+    			font-family: "Times New Roman", Times, serif;
+			    position: absolute;
+			    margin-top: 10px;
+			    margin-left: 36%;
+    			width: 400px;
+    		}
+
+    		.form-group2{
+    			font-family: "Times New Roman", Times, serif;
+			    position: absolute;
+			    text-align: center;
+			    top: 45%;
+    			width: 100%;
+    		}
+
+    		#middlename{
+    			font-family: "Times New Roman", Times, serif;
+			    position: absolute;
+			    margin-top: 10px;
+			    margin-left: 36%;
+    			width: 400px;
+    		}
+
+    		.form-group3{
+    			font-family: "Times New Roman", Times, serif;
+			    position: absolute;
+			    text-align: center;
+			    top: 60%;
+    			width: 100%;
+    		}
+
+    		#lastname{
+    			font-family: "Times New Roman", Times, serif;
+			    position: absolute;
+			    margin-top: 10px;
+			    margin-left: 36%;
+    			width: 400px;
+    		}
+
+    		button{
+    			font-family: "Times New Roman", Times, serif;
+			    position: absolute;
+			    text-align: center;
+			    margin-top: 500px;
 			    margin-left: 40%;
     			width: 300px;
     		}
-
-    		table{
-    			font-family: "Times New Roman", Times, serif;
-			    position: absolute;
-			    text-align: center;
-			    font-size: 19px;
-			    margin-top: 30%;
-			    margin-left: 25%;
-    			width: 700px;
-    		}
-
-    		#backBtn{
-    			font-family: "Times New Roman", Times, serif;
-			    margin-left: 51%;
-			    position: absolute;
-			    margin-top: 25%;
-    			width: 200px;
-    			font-size: 20px;
-    			text-align: center;
-    		}	
-
-    		#addBtn{
-    			font-family: "Times New Roman", Times, serif;
-			    margin-left: 36%;
-			    position: absolute;
-			    margin-top: 25%;
-    			width: 200px;
-    			font-size: 20px;
-    			text-align: center;
-    		}
-
-    		a:hover{
-    			text-decoration: none;
-    		}
-
 		</style>
 	</head>
 
@@ -90,18 +102,37 @@
 		<?php  }
 		?>
 
-		<h1><?= $data['publication']->caption ?></h1>
-		
-		<p><?= $data['publication']->date_time ?></p>
+		<h1>Edit Your Profile</h1>
+		<form action='' method='post'>
+			<div class="form-group1">
+    			<label for="firstname">First Name</label>
+    			<input type='text' class='form-control' id='firstname' name='first_name' value='<?=$data->first_name ?>' /></div><br>
 
-		<img src='/images/<?= $data['publication']->picture?>' style="max-width:200px;max-height:200px" id="profile_pic_preview" />
-		
+  			<div class="form-group2">
+    			<label for="middlename">Middle Name</label>
+    			<input type="text" class="form-control" id="middlename" name='middle_name'
+    			value="<?=$data->middle_name ?>">
+  			</div>
 
-		<table>
+  			<div class="form-group3">
+    			<label for="lastname">Last Name</label>
+    			<input type="text" class="form-control" id="lastname" name='last_name'
+    			value="<?=$data->last_name ?>">
+  			</div><br>
+  			<br>
+  			<button type="submit" name='action' class="btn btn-primary">Save Changes</button>
+  			<br>
+		</form> 
+
+			<table>
 			<tr><th>Comment </th><th>Date/Time </th><th>Action </th></tr>
 			<?php
+
+
 					foreach($data['comment'] as $item)
 					{
+						if(//the user_id of the current session matches the user_id of the profile and the profile_id matches the publication profile_id. 
+										){
 						echo 	"<tr>
 									<td>$item->comment</td>
 									<td>$item->date_time</td>
@@ -110,11 +141,12 @@
 										<a href='/Comment/delete/$item->comment_id'> | Delete</a>
 									</td><br>
 								</tr>";
+							} else{continue};
 					}
 			?>
 		</table>
-		<a id="addBtn" href='/Comment/add/<?= $data['publication']->publication_id ?>'>Add a Comment</a>
-			
-		<a id="backBtn" href='/Publication/index'>Back</a>	
-		</body>
+
+
+
+	</body>
 </html>

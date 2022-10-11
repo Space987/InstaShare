@@ -22,4 +22,10 @@ class Publication extends \assignment2\core\Models{
 		$STMT->setFetchMode(\PDO::FETCH_CLASS, "assignment2\\models\\Publication");
 		return $STMT->fetch();
 	}
+
+	public function insert(){
+		$SQL = "INSERT INTO publication (profile_id, picture, caption, date_time) VALUES (:profile_id, :picture, :caption, :date_time)";
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['profile_id'=>$this->profile_id, 'picture'=>$this->picture, 'caption'=>$this->caption, 'date_time'=>$this->date_time]);
+	}
 }

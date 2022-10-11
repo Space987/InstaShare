@@ -20,7 +20,9 @@ class Comment extends \assignment2\core\Models{
 	public function update(){
 		$SQL = "UPDATE comment SET comment=:comment, date_time=:date_time WHERE comment_id=:comment_id";
 		$STMT = self::$_connection->prepare($SQL);
-		$STMT->execute(['comment'=>$this->comment, 'date_time'=>$this->date_time, 'comment_id'=>$this->comment_id]);
+		$STMT->execute(['comment'=>$this->comment, 
+						'date_time'=>$this->date_time, 
+						'comment_id'=>$this->comment_id]);
 	}
 
 	public function get($comment_id){

@@ -8,6 +8,7 @@ class Controller{
 	}
 
 	public function saveFile($file){
+		echo($file['tmp_name']);
 		if(empty($file['tmp_name'])){
 			return false;
 		}
