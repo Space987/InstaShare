@@ -18,17 +18,21 @@
 			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 			<style>
+
 				table{
 		    			font-family: "Times New Roman", Times, serif;
 					    position: absolute;
 					    text-align: center;
 					    font-size: 19px;
 					    margin-top: 10%;
-					    margin-left: 43%;
+					    margin-left: 28%;
+
 		    		}
 
-		    	th{
-		    		font-size: 30px;
+
+		    	th {
+		    		margin-left: 43%;
+					font-size: 30px;
 		    		font-weight: normal	;
 		    		font-family: "Times New Roman", Times, serif;
 		    	}
@@ -37,6 +41,18 @@
 	    			text-decoration: none;
 	    		}
 
+	    		img{
+			     vertical-align: top;
+    			 display: inline-block;
+    			 text-align: center;
+			     max-width:200px;
+			     max-height:140px;
+			     padding: 10px;
+
+    		}
+
+    		
+
 	    		.input-group{
 	    			position: absolute;
 	    			width: 250px;
@@ -44,9 +60,6 @@
 				    margin-left: 42%;
 	    		}
 
-	    		.profileTitle{
-	    			font-size: 30px;
-	    		}
 
 	    		button{
 	    			width: 40px;
@@ -82,7 +95,7 @@
                 						<a class="nav-link" href ="/User/logout">Logout</a>
             						</li>
 									<li class="nav-item">
-				    					<a class="nav-link" href ="/Profile/edit">My profile</a>
+				    					<a class="nav-link" href ="/Profile/edit/<?= $_SESSION["user_id"]?">My profile</a>
 				  					</li>
 
 				  					<li class="nav-item">
@@ -112,33 +125,64 @@
 				</div>
 			</form>
 			
-
+			
+				
+			
 			<table id="table">
-				<tr><th>Publications</th></tr>
+				<tr><th colspan="3">Publications</th></tr>
 				
 				<?php
+				$counter = 0;
+
+
 					foreach($data['publication'] as $item)
+
 					{
-						echo 	"<tr>
-									<td type=action><br>	
-										<a id='caption' href='/Publication/details/$item->publication_id'>$item->caption</a>
-									</td>
-								</tr>";
+						$counter++;
+						$check = $counter%4;
+								
+						if($check != 0){
+						echo 	"
+		
+							<td>
+								<br><img src='/images/$item->picture'/>	<br>
+								<a id='caption' href='/Publication/details/$item->publication_id'>$item->caption</a>
+								</td>
+
+								";
+							}
+							else{
+							echo 	"	
+							<tr> 
+							
+								</tr>
+								<td>
+								<br><img src='/images/$item->picture'/>	<br>
+								<a id='caption' href='/Publication/details/$item->publication_id'>$item->caption</a>
+								</td>
+
+								"
+								;
+								$counter = 1;
 					}
+				}
 				?>
 
 
-				<tr><th id="profileTitle"><br>Profiles</th></tr>
+
+				<tr><th colspan="3"><br>Profiles</th></tr>
 				<?php
 					foreach($data['profile'] as $item)
 					{
-						echo 	"<tr>
+						echo 	"
+								<tr>
 									<td type=action><br>	
 										<a id='caption' href='/Profile/display/$item->profile_id'>$item->first_name</a>
 									</td>
 								</tr>";
 					}
 				?>
+
 			</table>
 	</body>
 
