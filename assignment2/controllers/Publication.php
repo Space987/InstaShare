@@ -4,23 +4,16 @@ namespace assignment2\controllers;
 class Publication extends \assignment2\core\Controller{
 	
 	public function index(){
-	 	//display a list of all onwers
-	 	//instantiate an owner model object
 	 	$publication = new \assignment2\models\Publication();
-	 	//call the ->getAll() method to get all owners from the DB
 	 	$publications = $publication->getAll();
-	 	//pass the collection of owners to the view
 	 	$this->view('Publication/index', $publications);
 	 }
 
 	 public function search(){
 	 	$publication = new \assignment2\models\Publication();
-		$publication_caption = $publication->caption;
-
-	 	if("hello"== $publication_caption){
-	 		$publications += $publication->get($publication_id);
-	 	}
-	 	$this->view('Publication/index', $publications);	 
+		$search_val = $_GET['searchbar'];
+		$publications = $publication->getAllSimilar($search_val); 
+		$this->view('Publication/index', $publications);
 	 }
 
 	#[\assignment2\filters\Login]
@@ -109,16 +102,19 @@ class Publication extends \assignment2\core\Controller{
 			$filename = $this->saveFile($_FILES['profile_pic']);
 
 
-			$publication = new \assignment2\models\Publication();
-			$publication->profile_id = $profile_id_profile;
-			$publication->caption = $_POST['caption'];
-			$publication->date_time = $_POST['date_time'];
-			//$publication->publication_id = $publication_id;
-			$publication->picture = $filename;
+			if($_POST['caption'] == "" || $_POST['date_time'] == "" ||  $_FILES['profile_pic'] ['size'] == 0){
+				header('location:/Publication/add?error=All of the feilds must be filled');
+			}else{
 
-		
-			$publication->insert();	
-			header('location:/Publication/index?message=Publication Created');
+				$publication = new \assignment2\models\Publication();
+				$publication->profile_id = $profile_id_profile;
+				$publication->caption = $_POST['caption'];
+				$publication->date_time = $_POST['date_time'];
+				$publication->picture = $filename;
+
+				$publication->insert();	
+				header('location:/Publication/index?message=Publication Created');
+			}
 		}else{
 			$publication = new \assignment2\models\Publication();
 			$this->view('Publication/add');

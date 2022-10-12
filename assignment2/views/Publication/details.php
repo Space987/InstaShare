@@ -121,7 +121,7 @@
 		<p><?= $data['publication']->date_time ?></p>
 		
 
-		<img src='/images/<?= $data['publication']->picture?>' style="max-width:300px;max-height:3	00px" id="profile_pic_preview" />
+		<img src='/images/<?= $data['publication']->picture?>' style="max-width:300px;max-height:180px" id="profile_pic_preview" />
 
 		<table>
 			<tr><th>Comment </th><th>Date/Time </th><th>Action </th></tr>

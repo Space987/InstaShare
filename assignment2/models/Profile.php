@@ -3,6 +3,14 @@ namespace assignment2\models;
 
 class Profile extends \assignment2\core\Models{
 
+	public function getAll(){
+		$SQL = "SELECT * FROM profile";
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute();
+		$STMT->setFetchMode(\PDO::FETCH_CLASS, "assignment2\\models\\Profile");
+		return $STMT->fetchAll();
+	}
+
 	public function insert(){
 		$SQL = "INSERT INTO profile(user_id, first_name, middle_name, last_name) VALUES (:user_id, :first_name, :middle_name, :last_name)";
 		$STMT = self::$_connection->prepare($SQL);

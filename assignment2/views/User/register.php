@@ -137,6 +137,5 @@
   			<button type="submit" name='action' value='Register' class="btn btn-primary">Sign up</button>
   			<br>
 		</form>
-		<a id="backBtn" href='javascript: history.go(-1)'>Back</a>
 	</body>
 </html>

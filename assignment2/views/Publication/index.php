@@ -24,7 +24,7 @@
 					    text-align: center;
 					    font-size: 19px;
 					    margin-top: 10%;
-					    margin-left: 45%;
+					    margin-left: 43%;
 		    		}
 
 		    	th{
@@ -51,29 +51,33 @@
 	</head>
 	<body>
 			<?php
-			if(isset($_GET['error'])){ ?>
-				<div class="alert alert-danger alert-dismissible">
-  					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-  					<?= $_GET['error'] ?>
-				</div>
-		<?php  }
-			if(isset($_GET['message'])){ ?>
-				<div class="alert alert-success alert-dismissible">
-  					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-  					<?= $_GET['message'] ?>
-				</div>
-		<?php  }
-		?>
-
+				if(isset($_GET['error'])){ ?>
+					<div class="alert alert-danger alert-dismissible">
+  						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  						<?= $_GET['error'] ?>
+					</div>
+			<?php  }
+				if(isset($_GET['message'])){ ?>
+					<div class="alert alert-success alert-dismissible">
+  						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  						<?= $_GET['message'] ?>
+					</div>
+			<?php  }
+			?>
 			<nav class="navbar navbar-expand-md navbar-dark bg-dark">
     			<div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+        			<ul class="navbar-nav">
+            			<li class="nav-item">
+                			<a class="nav-link" href ="/Publication/index">Main Page</a>
+            			</li>
+           	        </ul>
         			<ul class="navbar-nav ml-auto">
             			<?php if(isset($_SESSION['username'])){
             				echo '	<li class="nav-item">
                 						<a class="nav-link" href ="/User/logout">Logout</a>
             						</li>
 									<li class="nav-item">
-				    					<a class="nav-link" href ="/Profile/edit/<?php{ $_SESSION["user_id"]};>?">My profile</a>
+				    					<a class="nav-link" href ="/Profile/edit">My profile</a>
 				  					</li>
 
 				  					<li class="nav-item">
@@ -90,15 +94,19 @@
            	        </ul>
     			</div>
 			</nav>
-
-			<div class="input-group">
-			  <div class="form-outline">
-			    <input type="text" id="searchbar" class="form-control" name="search" placeholder="Search" />
-			  </div>
-			  <button type="submit" name="action" onclick="window.location = '/Publication/search'" class="btn btn-primary">
-			    <i class="fa fa-search"></i>
-			  </button>
-			</div>
+			
+			<form action='/Publication/search/' method="get">
+				<div class="input-group">
+				  <div class="form-outline">
+				    <input type="text" id="searchbar" class="form-control" name="searchbar" placeholder="Search" />
+				  </div>
+				  <button name="action" class="btn btn-primary">
+				    <i class="fa fa-search"></i>
+				  </button>
+				</div>
+				</div>
+			</form>
+			
 
 			<table id="table">
 				<tr><th>Publications</th></tr>

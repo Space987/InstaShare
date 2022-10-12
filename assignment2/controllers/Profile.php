@@ -2,7 +2,7 @@
 namespace assignment2\controllers;
 
 class Profile extends \assignment2\core\Controller{
-		
+	
 	public function add(){
 		if(isset($_POST['action'])){
 			$profile = new \assignment2\models\Profile();

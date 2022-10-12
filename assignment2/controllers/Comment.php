@@ -49,14 +49,19 @@ class Comment extends \assignment2\core\Controller{
 			$profile = $profile->getUser($user_id_user);
 			$profile_id_profile = $profile->profile_id;
 
-			$comment = new \assignment2\models\Comment();
-			$comment->comment = $_POST['comment'];
-			$comment->date_time = $_POST['date_time'];
+			
+			if($_POST['comment'] == "" || $_POST['date_time'] == ""){
+				header('location:/Publication/details/' . $publication_id . '?error=All of the feilds must be filled');
+			}else{
+				$comment = new \assignment2\models\Comment();
+				$comment->comment = $_POST['comment'];
+				$comment->date_time = $_POST['date_time'];
 
-			$comment->publication_id = $publication_id;
-			$comment->profile_id= $profile_id_profile;
-			$comment->insert();	
-			header('location:/Publication/details/' . $publication_id);
+				$comment->publication_id = $publication_id;
+				$comment->profile_id= $profile_id_profile;
+				$comment->insert();	
+				header('location:/Publication/details/' . $publication_id);
+			}
 		}else{
 			$publication = new \assignment2\models\Publication();
 	 		$publication = $publication->get($publication_id);
