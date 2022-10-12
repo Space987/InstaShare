@@ -38,6 +38,14 @@ class Publication extends \assignment2\core\Models{
 		return $STMT->fetch();
 	}
 
+	public function getAllProfile($profile_id){
+		$SQL = "SELECT * FROM publication WHERE profile_id = :profile_id";
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['profile_id'=>$profile_id]);
+		$STMT->setFetchMode(\PDO::FETCH_CLASS, "assignment2\\models\\Publication");
+		return $STMT->fetchAll();
+	}
+
 	public function deleteComments(){
 		$SQL = "DELETE FROM comment WHERE publication_id=:publication_id";
 		$STMT = self::$_connection->prepare($SQL);

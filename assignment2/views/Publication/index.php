@@ -39,8 +39,13 @@
 
 	    		.input-group{
 	    			position: absolute;
+	    			width: 250px;
 				    margin-top: 20px;
 				    margin-left: 42%;
+	    		}
+
+	    		.profileTitle{
+	    			font-size: 30px;
 	    		}
 
 	    		button{
@@ -65,7 +70,7 @@
 			<?php  }
 			?>
 			<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    			<div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+    			<div class="navbar-collapse">
         			<ul class="navbar-nav">
             			<li class="nav-item">
                 			<a class="nav-link" href ="/Publication/index">Main Page</a>
@@ -77,7 +82,7 @@
                 						<a class="nav-link" href ="/User/logout">Logout</a>
             						</li>
 									<li class="nav-item">
-				    					<a class="nav-link" href ="/Profile/edit">My profile</a>
+				    					<a class="nav-link" href ="/Profile/edit/<?= $_SESSION["user_id"]?">My profile</a>
 				  					</li>
 
 				  					<li class="nav-item">
@@ -96,7 +101,7 @@
 			</nav>
 			
 			<form action='/Publication/search/' method="get">
-				<div class="input-group">
+				<div class="input-group rounded">
 				  <div class="form-outline">
 				    <input type="text" id="searchbar" class="form-control" name="searchbar" placeholder="Search" />
 				  </div>
@@ -112,11 +117,24 @@
 				<tr><th>Publications</th></tr>
 				
 				<?php
-					foreach($data as $item)
+					foreach($data['publication'] as $item)
 					{
 						echo 	"<tr>
 									<td type=action><br>	
 										<a id='caption' href='/Publication/details/$item->publication_id'>$item->caption</a>
+									</td>
+								</tr>";
+					}
+				?>
+
+
+				<tr><th id="profileTitle"><br>Profiles</th></tr>
+				<?php
+					foreach($data['profile'] as $item)
+					{
+						echo 	"<tr>
+									<td type=action><br>	
+										<a id='caption' href='/Profile/display/$item->profile_id'>$item->first_name</a>
 									</td>
 								</tr>";
 					}

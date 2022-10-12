@@ -6,14 +6,21 @@ class Publication extends \assignment2\core\Controller{
 	public function index(){
 	 	$publication = new \assignment2\models\Publication();
 	 	$publications = $publication->getAll();
-	 	$this->view('Publication/index', $publications);
+
+	 	$profile = new \assignment2\models\Profile();
+	 	$profiles = $profile->getAll();
+	 	$this->view('Publication/index', ['publication'=>$publications, 'profile'=>$profiles]);
 	 }
 
 	 public function search(){
 	 	$publication = new \assignment2\models\Publication();
+	 	$profile = new \assignment2\models\Profile();
+
 		$search_val = $_GET['searchbar'];
-		$publications = $publication->getAllSimilar($search_val); 
-		$this->view('Publication/index', $publications);
+
+		$publications = $publication->getAllSimilar($search_val);
+		$profiles = $profile->getAllSimilar($search_val);
+		$this->view('Publication/index', ['publication'=>$publications, 'profile'=>$profiles]);
 	 }
 
 	#[\assignment2\filters\Login]

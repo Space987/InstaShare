@@ -90,24 +90,24 @@
 		<form action='' method='post'>
             <div class="form-group1">
                 <label for="firstname">First Name</label>
-                <input type='text' class='form-control' id='firstname' name='first_name' value='<?=$data->first_name ?>' /></div><br>
+                <input type='text' class='form-control' id='firstname' name='first_name' value='<?=profile_to_show->first_name ?>' /></div><br>
 
               <div class="form-group2">
                 <label for="middlename">Middle Name</label>
                 <input type="text" class="form-control" id="middlename" name='middle_name'
-                value="<?=$data->middle_name ?>">
+                value="<?=$profile->middle_name ?>">
               </div>
 
               <div class="form-group3">
                 <label for="lastname">Last Name</label>
                 <input type="text" class="form-control" id="lastname" name='last_name'
-                value="<?=$data->last_name ?>">
+                value="<?=$profile->last_name ?>">
               </div><br>
               <br>
               <button type="submit" name='action' class="btn btn-primary">Save Changes</button>
               <br>
         </form>
 		
-		<a id="backBtn" href='/Publication/details/<?= $data['publication']->publication_id ?>'>Back</a>
+		<a id="backBtn" href='/Publication/index'>Back</a>
 	</body>
 </html>
