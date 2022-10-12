@@ -112,7 +112,7 @@
 
   			<div class="form-group2">
     			<label for="date_time">Date and Time of Publication	</label>
-    			<input type="datetime-local" class="form-control" id="date_time" name='date_time' value="<?= $data['publication']->date_time ?>">
+    			<input type="datetime-local" class="form-control" id="date_time" name='date_time' value="<?= $data['profile']->date_time ?>">
   			</div><br>
   			
   			<div class="form-group3">

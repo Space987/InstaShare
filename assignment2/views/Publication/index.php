@@ -82,7 +82,7 @@
                 						<a class="nav-link" href ="/User/logout">Logout</a>
             						</li>
 									<li class="nav-item">
-				    					<a class="nav-link" href ="/Profile/edit/<?= $_SESSION["user_id"]?">My profile</a>
+				    					<a class="nav-link" href ="/Profile/edit">My profile</a>
 				  					</li>
 
 				  					<li class="nav-item">

@@ -23,7 +23,7 @@
     			font-family: "Times New Roman", Times, serif;
 			    position: absolute;
 			    text-align: center;
-			    top: 30%;
+			    top: 15%;
     			width: 100%;
     		}
 
@@ -31,8 +31,9 @@
     			font-family: "Times New Roman", Times, serif;
 			    position: absolute;
 			    text-align: center;
-			    top: 40%;
-    			width: 100%;
+			    top: 25%;
+			    margin-left: 40%;
+    			width: 300px;
     		}
 
     		#comment{
@@ -47,8 +48,9 @@
     			font-family: "Times New Roman", Times, serif;
 			    position: absolute;
 			    text-align: center;
-			    top: 60%;
-    			width: 100%;
+			    top: 40%;
+    			width: 300px;
+    			margin-left: 40%;
     		}
 
     		#date_time{
@@ -59,11 +61,20 @@
     			width: 400px;
     		}
 
+    		.form-group3{
+    			font-family: "Times New Roman", Times, serif;
+			    position: absolute;
+			    text-align: center;
+			    top: 55%;
+    			width: 300px;
+    			margin-left: 40%;
+    		}
+
     		button{
     			font-family: "Times New Roman", Times, serif;
 			    position: absolute;
 			    text-align: center;
-			    margin-top: 530px;
+			    margin-top: 480px;
 			    margin-left: 43%;
     			width: 230px;
     		}
@@ -72,7 +83,7 @@
     			font-family: "Times New Roman", Times, serif;
 			    margin-left: 44%;
 			    position: absolute;
-			    margin-top: 38%;
+			    margin-top: 34%;
     			width: 200px;
     			font-size: 20px;
     			text-align: center;
@@ -90,18 +101,18 @@
 		<form action='' method='post'>
             <div class="form-group1">
                 <label for="firstname">First Name</label>
-                <input type='text' class='form-control' id='firstname' name='first_name' value='<?=profile_to_show->first_name ?>' /></div><br>
+                <input type='text' class='form-control' id='firstname' name='first_name' value='<?= $data['profile']->first_name ?>' /></div><br>
 
               <div class="form-group2">
                 <label for="middlename">Middle Name</label>
                 <input type="text" class="form-control" id="middlename" name='middle_name'
-                value="<?=$profile->middle_name ?>">
+                value="<?= $data['profile']->first_name ?>">
               </div>
 
               <div class="form-group3">
                 <label for="lastname">Last Name</label>
                 <input type="text" class="form-control" id="lastname" name='last_name'
-                value="<?=$profile->last_name ?>">
+                value="<?= $data['profile']->first_name ?>">
               </div><br>
               <br>
               <button type="submit" name='action' class="btn btn-primary">Save Changes</button>
