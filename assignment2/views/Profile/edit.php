@@ -102,7 +102,23 @@
 	</head>
 
 	<body>
-		<h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Edit your Profile</h1>
+
+		<?php
+			if(isset($_GET['error'])){ ?>
+				<div class="alert alert-danger alert-dismissible">
+  					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  					<?= $_GET['error'] ?>
+				</div>
+		<?php  }
+			if(isset($_GET['message'])){ ?>
+				<div class="alert alert-success alert-dismissible">
+  					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  					<?= $_GET['message'] ?>
+				</div>
+		<?php  }
+		?>
+
+		<h1>Edit your Profile</h1>
 		<form action='' method='post'>
             <div class="form-group1">
                 <label for="first_name">First Name</label>
@@ -120,8 +136,63 @@
               <button type="submit" name='action' class="btn btn-primary">Save Changes</button>
               <br>
 
-              	<a id="backBtn" href='/Publication/index'>Back</a>
-        </form>
+          	<a id="backBtn" href='/Publication/index'>Back</a>
+    </form>
+
+    <table id="table">
+				<tr><th colspan="3">Publications</th></tr>
+				
+				<?php
+				$counter = 0;
+
+
+					foreach($data['publication'] as $item)
+
+					{
+						$counter++;
+						$check = $counter%4;
+								
+						if($check != 0){
+						echo 	"
+		
+							<td>
+								<br><img src='/images/$item->picture'/>	<br>
+								<a id='caption' href='/Publication/details/$item->publication_id'>$item->caption</a>
+								</td>
+								";
+							}
+							else{
+							echo 	"	
+							<tr> 
+							
+								</tr>
+								<td>
+								<br><img src='/images/$item->picture'/>	<br>
+								<a id='caption' href='/Publication/details/$item->publication_id'>$item->caption</a>
+								</td>
+								"
+								;
+								$counter = 1;
+					}
+				}
+				?>
+
+
+
+				<tr><th colspan="3"><br>Profiles</th></tr>
+				<?php
+					foreach($data['profile'] as $item)
+					{
+						echo 	"
+								<tr>
+									<td type=action><br>	
+										<a id='caption' href='/Profile/display/$item->profile_id'>$item->first_name</a>
+									</td>
+								</tr>";
+					}
+				?>
+
+			</table>
 		
 	
 	</body>
