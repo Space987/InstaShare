@@ -41,12 +41,34 @@ class Profile extends \assignment2\core\Controller{
 		}else{
 			$profile = new \assignment2\models\Profile;
 			$profile_to_show = new \assignment2\models\Profile;
-			$profiles = $profile->getAll(); 
+			$profiles = $profile->getAll();
+			$profile = $profile->get($profile_id); 
+
+			$publication = new \assignment2\models\Publication;
+
+			$comment = new \assignment2\models\comment;
+
+
+			/*foreach($publications as $item)
+			{
+				if($item->profile_id == $profile_id){
+					$publications_to_show = $publication->getAllProfile($profile_id);
+				}
+			}
+
+			foreach($comments as $item)
+			{
+				if($item->profile_id == $profile_id){
+					$comments_to_show = $comment->getAllProfile($profile_id);
+				}
+			}*/
 
 			foreach($profiles as $item){
 				if($item->user_id == $_SESSION['user_id']){
 					$profile_to_show = $profile->get($item->profile_id);
-					$this->view('Profile/edit', ['profile'=>$profile_to_show], ['publication'=>$publications]);
+					$publications = $publication->getAllProfile($profile_id);
+					$comments = $comment->getAllProfile($profile_id);
+					$this->view('Profile/edit', ['profile'=>$profile_to_show, 'publication'=>$publications, 'comment'=>$comments]);
 					break;
 				} 
 			}

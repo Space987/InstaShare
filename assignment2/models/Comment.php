@@ -17,6 +17,14 @@ class Comment extends \assignment2\core\Models{
 		$STMT->execute(['publication_id'=>$this->publication_id, 'profile_id'=>$this->profile_id, 'comment'=>$this->comment, 'date_time'=>$this->date_time]);
 	}
 
+	public function getAllProfile($profile_id){
+		$SQL = "SELECT * FROM comment WHERE profile_id = :profile_id";
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['profile_id'=>$profile_id]);
+		$STMT->setFetchMode(\PDO::FETCH_CLASS, "assignment2\\models\\Comment");
+		return $STMT->fetchAll();
+	}
+
 	public function update(){
 		$SQL = "UPDATE comment SET comment=:comment, date_time=:date_time WHERE comment_id=:comment_id";
 		$STMT = self::$_connection->prepare($SQL);

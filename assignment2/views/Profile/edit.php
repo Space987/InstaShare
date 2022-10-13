@@ -75,11 +75,37 @@
     			margin-left: 40%;
     		}
 
+    		table{
+		    			font-family: "Times New Roman", Times, serif;
+					    position: absolute;
+					    text-align: center;
+					    font-size: 19px;
+					    margin-top: 40%;
+					    margin-left: 37%;
+		    		}
+
+		    th{
+		    	font-size: 24px;
+		    	font-weight: normal;
+		    	font-family: "Times New Roman", Times, serif;
+		    }
+
+		    img{
+			     vertical-align: top;
+    			 display: inline-block;
+    			 text-align: center;
+			     max-width:200px;
+			     max-height:140px;
+			     padding: 10px;
+
+    		}
+
+
     		button{
     			font-family: "Times New Roman", Times, serif;
 			    position: absolute;
 			    text-align: center;
-			    margin-top: 480px;
+			    margin-top: 482px;
 			    margin-left: 43%;
     			width: 230px;
     		}
@@ -88,7 +114,7 @@
     			font-family: "Times New Roman", Times, serif;
 			    margin-left: 44%;
 			    position: absolute;
-			    margin-top: 40%;
+			    margin-top: 35%;
     			width: 200px;
     			font-size: 20px;
     			text-align: center;
@@ -140,7 +166,7 @@
     </form>
 
     <table id="table">
-				<tr><th colspan="3">Publications</th></tr>
+				<tr><th colspan="3"> My Publications</th></tr>
 				
 				<?php
 				$counter = 0;
@@ -179,14 +205,14 @@
 
 
 
-				<tr><th colspan="3"><br>Profiles</th></tr>
+				<tr><th colspan="3"><br>Your Comments</th></tr>
 				<?php
-					foreach($data['profile'] as $item)
+					foreach($data['comment'] as $item)
 					{
 						echo 	"
 								<tr>
 									<td type=action><br>	
-										<a id='caption' href='/Profile/display/$item->profile_id'>$item->first_name</a>
+										<a id='caption' href='/Publication/details/$item->publication_id'>$item->comment</a>
 									</td>
 								</tr>";
 					}
