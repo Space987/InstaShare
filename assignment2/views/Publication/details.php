@@ -128,11 +128,12 @@
 		<img src='/images/<?= $data['publication']->picture?>' style="max-width:300px;max-height:180px" id="profile_pic_preview" />
 
 		<table>
-			<tr><th>Comment </th><th>Date/Time </th><th>Action </th></tr>
+			<tr><th>Profile ID</th><th>Comment </th><th>Date/Time </th><th>Action </th></tr>
 			<?php
 					foreach($data['comment'] as $item)
 					{
 						echo 	"<tr>
+									<td>$item->profile_id</td>
 									<td>$item->comment</td>
 									<td>$item->date_time</td>
 									<td type=action>

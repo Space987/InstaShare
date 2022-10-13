@@ -28,6 +28,7 @@
     			font-family: "Times New Roman", Times, serif;
 			    position: absolute;
 			    text-align: center;
+			    margin-left: 30px;
 			    top: 15%;
     			width: 100%;
     		}
@@ -80,9 +81,29 @@
 					    position: absolute;
 					    text-align: center;
 					    font-size: 19px;
-					    margin-top: 40%;
-					    margin-left: 37%;
 		    		}
+
+					 
+				.column_1 {
+				  float: left;
+				  width: 50%;
+				  padding-top: 600px;
+				  padding-left: 100px;
+				}
+
+					.column_2 {
+				  float: left;
+				  width: 50%;
+				  padding-top: 570px;
+				  padding-left: 200px;
+				}
+
+				
+				.row:after {
+				  content: "";
+				  display: table;
+				  clear: both;
+				}
 
 		    th{
 		    	font-size: 24px;
@@ -114,7 +135,7 @@
     			font-family: "Times New Roman", Times, serif;
 			    margin-left: 44%;
 			    position: absolute;
-			    margin-top: 35%;
+			    margin-top: 41%;
     			width: 200px;
     			font-size: 20px;
     			text-align: center;
@@ -128,7 +149,6 @@
 	</head>
 
 	<body>
-
 		<?php
 			if(isset($_GET['error'])){ ?>
 				<div class="alert alert-danger alert-dismissible">
@@ -143,7 +163,6 @@
 				</div>
 		<?php  }
 		?>
-
 		<h1>Edit your Profile</h1>
 		<form action='' method='post'>
             <div class="form-group1">
@@ -162,11 +181,13 @@
               <button type="submit" name='action' class="btn btn-primary">Save Changes</button>
               <br>
 
-          	<a id="backBtn" href='/Publication/index'>Back</a>
+          	<a id="backBtn"  href='/Publication/index'>Back</a>
     </form>
 
-    <table id="table">
-				<tr><th colspan="3"> My Publications</th></tr>
+ <div class="row">   
+<div class="column_1">
+    <table>
+				<tr><th colspan="3"><b> My Publications </b> </th></tr>
 				
 				<?php
 				$counter = 0;
@@ -182,7 +203,7 @@
 						echo 	"
 		
 							<td>
-								<br><img src='/images/$item->picture'/>	<br>
+								<br><img src='/images/$item->picture'/><br>
 								<a id='caption' href='/Publication/details/$item->publication_id'>$item->caption</a>
 								</td>
 								";
@@ -193,7 +214,7 @@
 							
 								</tr>
 								<td>
-								<br><img src='/images/$item->picture'/>	<br>
+								<br><img src='/images/$item->picture'/><br>
 								<a id='caption' href='/Publication/details/$item->publication_id'>$item->caption</a>
 								</td>
 								"
@@ -202,10 +223,13 @@
 					}
 				}
 				?>
+			</table>
 
+	</div>
 
-
-				<tr><th colspan="3"><br>Your Comments</th></tr>
+<div class="column_2">
+<table>
+				<tr><th colspan="3"><br> <b> Your Comments </b> </th></tr>
 				<?php
 					foreach($data['comment'] as $item)
 					{
@@ -219,6 +243,8 @@
 				?>
 
 			</table>
+			</div>
+	</div>
 		
 	
 	</body>
