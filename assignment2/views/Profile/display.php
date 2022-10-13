@@ -32,14 +32,23 @@
 			    top: 15%;
     			width: 100%;
     		}
+    		img{
+			     vertical-align: top;
+    			 display: inline-block;
+    			 text-align: center;
+			     max-width:200px;
+			     max-height:140px;
+			     padding: 10px;
+
+    		}
 
     		table{
 		    			font-family: "Times New Roman", Times, serif;
 					    position: absolute;
 					    text-align: center;
 					    font-size: 19px;
-					    margin-top: 27%;
-					    margin-left: 44%;
+					    margin-top: 25%;
+					    margin-left: 31%;
 		    		}
 
 		    th{
@@ -114,20 +123,46 @@
 				</div>	
 			</dl>
 
-		<table>
-			<tr><th>User's Publications</th></tr>
-			<?php
+		<table id="table">
+				<tr><th colspan="3">Publications</th></tr>
+				
+				<?php
+				$counter = 0;
+
+
 					foreach($data['publication'] as $item)
+
 					{
-						echo 	"<tr>
-										<td type=action>
-											<br><a id='caption' href='/Publication/details/$item->publication_id'>$item->caption</a>
-										</td><br>
-								</tr>";
+						$counter++;
+						$check = $counter%4;
+								
+						if($check != 0){
+						echo 	"
+		
+							<td>
+								<br><img src='/images/$item->picture'/>	<br>
+								<a id='caption' href='/Publication/details/$item->publication_id'>$item->caption</a>
+								</td>
+								";
+							}
+							else{
+							echo 	"	
+							<tr> 
+							
+								</tr>
+								<td>
+								<br><img src='/images/$item->picture'/>	<br>
+								<a id='caption' href='/Publication/details/$item->publication_id'>$item->caption</a>
+								</td>
+								"
+								;
+								$counter = 1;
 					}
-			?>
-		</table>
+				}
+				?>
+			</table>
 		
 		<a id="backBtn" href='/Publication/index'>Back</a>
 	</body>
+</html>
 </html>
