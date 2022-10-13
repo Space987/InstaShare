@@ -19,6 +19,10 @@
 
 			<style>
 
+				body{
+					background-color:#FDF5E6;
+				}
+
 				table{
 		    			font-family: "Times New Roman", Times, serif;
 					    position: absolute;
@@ -97,7 +101,6 @@
 									<li class="nav-item">
 				    					<a class="nav-link" href ="/Profile/edit/<?= $_SESSION["user_id"]?">My profile</a>
 				  					</li>
-
 				  					<li class="nav-item">
 				    					<a class="nav-link" href ="/Publication/add">Create Publication</a>
 				  					</li>';
@@ -148,7 +151,6 @@
 								<br><img src='/images/$item->picture'/>	<br>
 								<a id='caption' href='/Publication/details/$item->publication_id'>$item->caption</a>
 								</td>
-
 								";
 							}
 							else{
@@ -160,7 +162,6 @@
 								<br><img src='/images/$item->picture'/>	<br>
 								<a id='caption' href='/Publication/details/$item->publication_id'>$item->caption</a>
 								</td>
-
 								"
 								;
 								$counter = 1;
@@ -184,6 +185,7 @@
 				?>
 
 			</table>
+			
 	</body>
 
 </html>

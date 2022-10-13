@@ -18,6 +18,12 @@
 		<title>View Profile</title>
 
 		<style>
+
+			body{
+					background-color:#FDF5E6;
+				}
+
+			
     		h1{
     			font-size: 30px;
     			font-family: "Times New Roman", Times, serif;

@@ -18,6 +18,10 @@
 		<title>Edit Publication</title>
 
 		<style>
+			body{
+					background-color:#FDF5E6;
+				}
+
     		h1{
     			font-size: 30px;
     			font-family: "Times New Roman", Times, serif;
@@ -89,7 +93,7 @@
     			font-family: "Times New Roman", Times, serif;
 			    margin-left: 44%;
 			    position: absolute;
-			    margin-top: 38%;
+			    margin-top: 45%;
     			width: 200px;
     			font-size: 20px;
     			text-align: center;
@@ -112,14 +116,13 @@
 
   			<div class="form-group2">
     			<label for="date_time">Date and Time of Publication	</label>
-    			<input type="datetime-local" class="form-control" id="date_time" name='date_time' value="<?= $data['profile']->date_time ?>">
+    			<input type="datetime-local" class="form-control" id="date_time" name='date_time' value="<?= $data['publication']->date_time ?>">
   			</div><br>
   			
   			<div class="form-group3">
-    			<label for="profile_pic_preview">Your Image</label>
+    			<label for="profile_pic_preview">Your Image</label> 
     			<input type="file" class="form-control" id="profile_pic_preview" name='profile_pic'>
-  			</div><br>
-  			<br>
+  			</div>
   			<button type="submit" name='action' class="btn btn-primary">Save Changes</button>
   			<br>
 		</form>

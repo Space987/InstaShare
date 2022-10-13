@@ -48,7 +48,8 @@ class Profile extends \assignment2\core\Models{
         $SQL = "UPDATE profile SET first_name=:first_name, middle_name=:middle_name, last_name=:last_name WHERE profile_id=:profile_id";
         $STMT = self::$_connection->prepare($SQL);
         $STMT->execute(['first_name'=>$this->first_name,
-                        'middle_name'=>$this->middle_name,
-                        'last_name'=>$this->last_name]);
+                        'middle_name' =>$this->middle_name,
+                        'last_name'=>$this->last_name,
+                        'profile_id'=>$this->profile_id]);
     }
 }

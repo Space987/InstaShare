@@ -19,13 +19,19 @@ class Profile extends \assignment2\core\Controller{
 
 	#[\assignment2\filters\Login]
 	public function edit(){
+
+		$profile = new \assignment2\models\Profile;
+
+
 		if(isset($_POST['action'])){
-			$profile = new \assignment2\models\Profile;
+			
 			$profile->first_name = $_POST['first_name'];
 			$profile->middle_name = $_POST['middle_name'];
 			$profile->last_name = $_POST['last_name'];
+			var_dump($profile);
 			$profile->update();
-			header('location:/Publication/index?message=Profile Updated');
+			var_dump($profile);
+			//header('location:/Publication/index?message=Profile Updated');
 		}else{
 			$profile = new \assignment2\models\Profile;
 			$profile_to_show = new \assignment2\models\Profile;

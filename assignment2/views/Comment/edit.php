@@ -18,6 +18,11 @@
 		<title>Edit Comment</title>
 
 		<style>
+			
+			body{
+					background-color:#FDF5E6;
+				}
+
     		h1{
     			font-size: 30px;
     			font-family: "Times New Roman", Times, serif;
@@ -72,7 +77,7 @@
     			font-family: "Times New Roman", Times, serif;
 			    margin-left: 44%;
 			    position: absolute;
-			    margin-top: 38%;
+			    margin-top: 45%;
     			width: 200px;
     			font-size: 20px;
     			text-align: center;
@@ -96,8 +101,7 @@
   			<div class="form-group2">
     			<label for="date_time">Date and Time of Comment	</label>
     			<input type="datetime-local" class="form-control" id="date_time" name='date_time' value="<?= $data['comment']->date_time ?>">
-  			</div><br>
-  			<br>
+  			</div>
   			<button type="submit" name='action' class="btn btn-primary">Save Changes</button>
   			<br>
 		</form>

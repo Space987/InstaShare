@@ -18,6 +18,11 @@
 		<title>Edit Profile</title>
 
 		<style>
+
+				body{
+					background-color:#FDF5E6;
+				}
+
     		h1{
     			font-size: 30px;
     			font-family: "Times New Roman", Times, serif;
@@ -83,7 +88,7 @@
     			font-family: "Times New Roman", Times, serif;
 			    margin-left: 44%;
 			    position: absolute;
-			    margin-top: 34%;
+			    margin-top: 40%;
     			width: 200px;
     			font-size: 20px;
     			text-align: center;
@@ -97,28 +102,27 @@
 	</head>
 
 	<body>
-		<h1>Edit your Profile</h1>
+		<h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Edit your Profile</h1>
 		<form action='' method='post'>
             <div class="form-group1">
-                <label for="firstname">First Name</label>
-                <input type='text' class='form-control' id='firstname' name='first_name' value='<?= $data['profile']->first_name ?>' /></div><br>
+                <label for="first_name">First Name</label>
+                <input type='text' class='form-control' id='first_name' name='first_name' value='<?=$data['profile']->first_name?>' /></div><br>
 
               <div class="form-group2">
-                <label for="middlename">Middle Name</label>
-                <input type="text" class="form-control" id="middlename" name='middle_name'
-                value="<?= $data['profile']->first_name ?>">
+                <label for="middle_nname">Middle Name</label>
+                <input type="text" class="form-control" id="middle_name" name='middle_name' value="<?=$data['profile']->middle_name?>">
               </div>
 
               <div class="form-group3">
-                <label for="lastname">Last Name</label>
-                <input type="text" class="form-control" id="lastname" name='last_name'
-                value="<?= $data['profile']->first_name ?>">
-              </div><br>
-              <br>
+                <label for="last_name">Last Name</label>
+                <input type="text" class="form-control" id="last_name" name='last_name' value="<?=$data['profile']->last_name?>">
+              </div>
               <button type="submit" name='action' class="btn btn-primary">Save Changes</button>
               <br>
+
+              	<a id="backBtn" href='/Publication/index'>Back</a>
         </form>
 		
-		<a id="backBtn" href='/Publication/index'>Back</a>
+	
 	</body>
 </html>
