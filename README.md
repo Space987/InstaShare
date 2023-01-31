@@ -1,4 +1,4 @@
-# Assignment2
+# InstaShare
 This is our final version for the eCommerce Assignment 2
 
 #Team memebers: 
